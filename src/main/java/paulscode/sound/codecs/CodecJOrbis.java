@@ -89,12 +89,12 @@ public class CodecJOrbis implements ICodec
 /**
  * URL to the audio file to stream from.
  */
-    private URL url;
+    protected URL url;
 
 /**
  * Used for connecting to the URL.
  */
-    private URLConnection urlConnection = null;
+    protected URLConnection urlConnection = null;
 
 /**
  * InputStream context for reading data from the file.
