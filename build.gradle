@@ -1,0 +1,52 @@
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+}
+
+version = '20221222'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+repositories {
+	mavenCentral()
+	maven { url = 'https://nexus.velocitypowered.com/repository/maven-public/' } 
+}
+
+dependencies {
+	implementation 'com.paulscode:soundsystem:20120107'
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			groupId = 'com.paulscode'
+			artifactId = 'codecjorbis-impl'
+			version = '20221222'
+			versionMapping {
+				usage('java-api') {
+					fromResolutionOf('runtimeClasspath')
+				}
+				usage('java-runtime') {
+					fromResolutionResult()
+				}
+			}
+			pom {
+				name = 'codecjorbis-impl'
+				description = 'AncientMC implementation of CodecJOrbis by Paul Lamb (paulscode.com).'
+				licenses {
+					license {
+						name = 'The GNU General Public License, v3.0'
+						url = 'https://www.gnu.org/licenses/gpl-3.0.en.html'
+					}
+				}
+			}
+		}
+	}
+	repositories {
+		maven {
+			name = 'ancientmc-maven'
+			url = 'D:\\Programs\\Projects\\AncientMC\\ancientmc-maven'
+		}
+	}
+}
